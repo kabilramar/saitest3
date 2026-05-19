@@ -1,0 +1,8 @@
+<form action="" method="POST">
+        {% csrf_token %}
+        {% if data %} 
+       <input type="text" name="name" id="name" value="{{data.name}}" required><br>
+        <input type="number" name="age" value="{{data.age}}" required><br>
+        <input type="submit" value="update">
+        {% endif %}
+    </form>

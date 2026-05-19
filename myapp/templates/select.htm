@@ -1,0 +1,27 @@
+{% load static %}
+<script src="{% static 'js\jquery.min.js' %}"></script>
+<script>
+$(document).ready(function(){
+$("#myInput").on("keyup", function() {
+var value = $(this).val().toLowerCase();
+$("#myTable tr").filter(function() {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+});
+});
+</script>
+<h1>DATA FROM DB</h1>
+<input type="search" id="myInput" placeholder="search">
+<table border="1" id="myTable">
+{% if data %}
+{% for i in data %}
+<tr>
+    <td>{{i.name}}</td>
+<td>{{i.age}}</td>
+<td><a href="/delete/{{i.id}}">delete</a></td>
+<td> <a href="/edit/{{i.id}}">edit</a></td>
+</tr>
+{% endfor %} {% endif %}
+</table>
+<a href="/">Add New Record</a>
+
